@@ -69,15 +69,24 @@
     <a target="_blank" rel="noopener" href="https://php.net">
         <img
             alt="PHP"
-            src="https://www.php.net/images/logos/new-php-logo.svg"
+            src="../../../../images/logos/selenium_logo.jpeg"
             width="150">    </a></div>
 
-<h1 id="The-PHP-Interpreter"><a href="#The-PHP-Interpreter" class="headerlink" title="The PHP Interpreter"></a>Selenium Common API</h1><p>Selenium is a tool of testing web applications. Selenium-testing runs in the browser directly, just like a real user is operating. <br>Selenium supports multiple  browsers, include ie (7, 8, 9, 10, 11), Mozilla, Firefox, Safari, Google Chrome, opera, edge, etc. <br>The main functions of this tool include: testing compatibility of browsers - testing your applications to see if they work well on <br>different browsers and operating systems. Testing system function - create regression test to test software function and user requirement. <br>It supports automatic recording of actions and automatic generation of test scripts in .Net, Java, Perl and other languages.</p>
+<h1 id="The-PHP-Interpreter"><a href="#The-PHP-Interpreter" class="headerlink" title="The PHP Interpreter"></a>Selenium Common API</h1><p>Selenium is a tool of testing web applications. Selenium-testing runs in the browser directly, just like a real user is operating. <br>Selenium supports multiple  browsers, include ie (7, 8, 9, 10, 11), Mozilla, Firefox, Safari, Google Chrome, opera, edge, etc. <br>The main functions of this tool include: testing compatibility of browsers - testing your applications to see if they work well on different browsers and operating systems. <br>Testing system function - create regression test to test software function and user requirement. <br>It supports automatic recording of actions and automatic generation of test scripts in .Net, Java, Perl and other languages.</p>
 <p><a target="_blank" rel="noopener" href="https://travis-ci.org/php/php-src"><img src="https://travis-ci.org/php/php-src.svg?branch=master" alt="Build status"></a><br><a target="_blank" rel="noopener" href="https://ci.appveyor.com/project/php/php-src"><img src="https://ci.appveyor.com/api/projects/status/meyur6fviaxgdwdy/branch/master?svg=true" alt="Build status"></a><br><a target="_blank" rel="noopener" href="https://dev.azure.com/phpazuredevops/php/_build/latest?definitionId=1&branchName=master"><img src="https://dev.azure.com/phpazuredevops/php/_apis/build/status/php.php-src?branchName=master" alt="Build Status"></a><br><a target="_blank" rel="noopener" href="https://bugs.chromium.org/p/oss-fuzz/issues/list?sort=-opened&can=1&q=proj:php"><img src="https://oss-fuzz-build-logs.storage.googleapis.com/badges/php.svg" alt="Fuzzing Status"></a></p>
-<h2 id="Documentation"><a href="#Documentation" class="headerlink" title="Documentation"></a>Documentation</h2><p>The PHP manual is available at <a target="_blank" rel="noopener" href="https://php.net/docs">php.net/docs</a>.</p>
-<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2><h3 id="Prebuilt-packages-and-binaries"><a href="#Prebuilt-packages-and-binaries" class="headerlink" title="Prebuilt packages and binaries"></a>Prebuilt packages and binaries</h3><p>Prebuilt packages and binaries can be used to get up and running fast with PHP.</p>
-<p>For Windows, the PHP binaries can be obtained from<br><a target="_blank" rel="noopener" href="https://windows.php.net/">windows.php.net</a>. After extracting the archive the<br><code>*.exe</code> files are ready to use.</p>
-<p>For other systems, see the <a target="_blank" rel="noopener" href="https://php.net/install">installation chapter</a>.</p>
+<h2 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h2>
+<h3 id="Prebuilt-packages-and-binaries"><a href="#Prebuilt-packages-and-binaries" class="headerlink" title="Prebuilt packages and binaries"></a>1.install via jar</h3><p>Click the link of Selenium download, you will see the introduction of Selenium Standalong Server:<br><a target="_blank" rel="noopener" href="http://docs.seleniumhq.org/download/">The Selenium Server is needed in order to run Remote Selenium WebDriver. Selenium 3.X is no longer capable of running Selenium RC directly, rather it does it through emulation and the WebDriverBackedSelenium interface.</a></p>
+<p>Download version 3.4.0<br>
+After download complete, we will get selenium-server-standalone-3.4.0.jar file.</p>
+<h3 id="Prebuilt-packages-and-binaries"><a href="#Prebuilt-packages-and-binaries" class="headerlink" title="Prebuilt packages and binaries"></a>2.install via Maven</h3><p>Open pom.xml and config Selenium</p>
+<pre><code>&lt;dependency&gt;
+		&lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;
+    	&lt;artifactId&gt;selenium-java&lt;/artifactId&gt;
+    	&lt;version&gt;3.4.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="Prebuilt-packages-and-binaries"><a href="#Prebuilt-packages-and-binaries" class="headerlink" title="Prebuilt packages and binaries"></a>3.Hello Selenium</h3><p>We wrote a simple Selenium Sample to verify if the enviroment has been installed succuffully.<br>If the execution reports an error, please refer to the next section, selenium 3 browser driver.</p>
+<h2 id="Browser driver"><a href="#Browser driver" class="headerlink" title="Browser driver"></a>Browser driver</h2>
 <h3 id="Building-PHP-source-code"><a href="#Building-PHP-source-code" class="headerlink" title="Building PHP source code"></a>Building PHP source code</h3><p><em>For Windows, see <a target="_blank" rel="noopener" href="https://wiki.php.net/internals/windows/stepbystepbuild_sdk_2">Build your own PHP on Windows</a>.</em></p>
 <p>For a minimal PHP build from Git, you will need autoconf, bison, and re2c. For<br>a default build, you will additionally need libxml2 and libsqlite3.</p>
 <p>On Ubuntu, you can install these using:</p>
