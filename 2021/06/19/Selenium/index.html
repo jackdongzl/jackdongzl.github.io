@@ -80,14 +80,58 @@
 After download complete, we will get selenium-server-standalone-3.4.0.jar file.</p>
 <h3 id="Prebuilt-packages-and-binaries"><a href="#Prebuilt-packages-and-binaries" class="headerlink" title="Prebuilt packages and binaries"></a>2.install via Maven</h3><p>Open pom.xml and config Selenium</p>
 <pre><code>&lt;dependency&gt;
-		&lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;
-    	&lt;artifactId&gt;selenium-java&lt;/artifactId&gt;
-    	&lt;version&gt;3.4.0&lt;/version&gt;
+    &lt;groupId&gt;org.seleniumhq.selenium&lt;/groupId&gt;
+    &lt;artifactId&gt;selenium-java&lt;/artifactId&gt;
+    &lt;version&gt;3.4.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
-<h3 id="Prebuilt-packages-and-binaries"><a href="#Prebuilt-packages-and-binaries" class="headerlink" title="Prebuilt packages and binaries"></a>3.Hello Selenium</h3><p>We wrote a simple Selenium Sample to verify if the enviroment has been installed succuffully.<br>If the execution reports an error, please refer to the next section, selenium 3 browser driver.</p>
+<h3 id="Prebuilt-packages-and-binaries"><a href="#Prebuilt-packages-and-binaries" class="headerlink" title="Prebuilt packages and binaries"></a>3.Hello Selenium</h3><p>We wrote a simple Selenium Sample to verify if the enviroment has been installed succuffully.</p>
+<pre><code>import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+ 
+public class Itest {
+    public static void main(String[] args) {
+ 
+        WebDriver driver = new ChromeDriver();
+        driver.get("http://www.itest.info");
+ 
+        String title = driver.getTitle();
+        System.out.printf(title);
+ 
+        driver.close();
+    }
+}
+</code></pre>
+<p>If the execution reports an error, please refer to the next section, selenium 3 browser driver.</p>
 <h2 id="Browser driver"><a href="#Browser driver" class="headerlink" title="Browser driver"></a>Browser driver</h2>
-<h3 id="Building-PHP-source-code"><a href="#Building-PHP-source-code" class="headerlink" title="Building PHP source code"></a>Building PHP source code</h3><p><em>For Windows, see <a target="_blank" rel="noopener" href="https://wiki.php.net/internals/windows/stepbystepbuild_sdk_2">Build your own PHP on Windows</a>.</em></p>
+<h3 id="Building-PHP-source-code"><a href="#Building-PHP-source-code" class="headerlink" title="Building PHP source code"></a>1.download browser driver</h3><p>After selenium was upgraded to v3.0, different browser drivers were standardized. <br>If you want to use selenium to drive different browsers, you must download and set up different browser drivers separately.<br>Download address of each browser:<br>Firefox: <a target="_blank" href="https://github.com/mozilla/geckodriver/releases">geckodriver</a><br>Chrome: <a target="_blank" href="https://sites.google.com/a/chromium.org/chromedriver/home">chromedriver</a><br>IE: <a target="_blank" href="http://selenium-release.storage.googleapis.com/index.html">IEDriverServer</a><br>Edge: <a target="_blank" href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/">MicrosoftWebDriver</a><br>Opera: <a target="_blank" href="https://github.com/operasoftware/operachromiumdriver/releases">operadriver</a><br>PhantomJS: <a target="_blank" href="http://phantomjs.org/">phantomjs</a></p>
+<h3 id="Building-PHP-source-code"><a href="#Building-PHP-source-code" class="headerlink" title="Building PHP source code"></a>2.set browser driver</h3><p>It is very easy to set the browser driver address. <br>We can manually create a directory to store the browser driver, such as C: \driver, and put the browser driver files (such as chromedriver and geckodriver) into this directory.<br>Then click on My computer –> properties –> system settings –> advanced –> environment variables –> system variables –> path, and add the directory (e.g. C:\Driver) to the value of path.</p>
+<h3 id="Building-PHP-source-code"><a href="#Building-PHP-source-code" class="headerlink" title="Building PHP source code"></a>3.verify browser driver</h3><p>Verify if each browser driver can work properly.</p>
+<pre><code>import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+ 
+……
+ 
+WebDriver driver = new ChromeDriver();    //Chrome浏览器
+ 
+WebDriver driver = new FirefoxDriver();   //Firefox浏览器
+ 
+WebDriver driver = new EdgeDriver();      //Edge浏览器
+ 
+WebDriver driver = new InternetExplorerDriver();  // Internet Explorer浏览器
+ 
+WebDriver driver = new OperaDriver();     //Opera浏览器
+ 
+WebDriver driver = new PhantomJSDriver();   //PhantomJS
+
+……
+</code></pre>
+<h2 id="Element locating"><a href="#Element locating" class="headerlink" title="Element locating"></a>Element locating</h2>
+<p><em>For Windows, see <a target="_blank" rel="noopener" href="https://wiki.php.net/internals/windows/stepbystepbuild_sdk_2">Build your own PHP on Windows</a>.</em></p>
 <p>For a minimal PHP build from Git, you will need autoconf, bison, and re2c. For<br>a default build, you will additionally need libxml2 and libsqlite3.</p>
 <p>On Ubuntu, you can install these using:</p>
 <pre><code>sudo apt install -y pkg-config build-essential autoconf bison re2c \
