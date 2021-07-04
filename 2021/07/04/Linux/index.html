@@ -79,7 +79,7 @@
 <p>Then we enter the command line interface.<br>Mount the CD-ROM in the previous step first, because the installation package of vmware tools is in the  <font color="red">linux.iso</font> file.</p>
 <p><strong>We use the following command:</strong></p>
 <p>Create CD-ROM mount point directory.</p>
-<pre><code>root@master ~]# mkdir /mnt/cdrom</code></pre>
+<pre><code>[root@master ~]# mkdir /mnt/cdrom</code></pre>
 <p>Mount the CD-ROM to this directory.</p>
 <pre><code>[root@master ~]# mount /dev/cdrom /mnt/cdrom/</code></pre>
 <p>Enter directory /mnt/cdrom to see the installation package of VMware Tools.</p
@@ -88,13 +88,13 @@
 <p>Copy the installation package to a directory as your pleases for unzip and installation.</p>
 <pre><code>[root@master ~]# cp /mnt/cdrom/VMwareTools-10.3.21-14772444.tar.gz /usr/local/vmware/
 [root@master ~]# cd /usr/local/vmware/
-[root@master vmware]# tar -zxvf VMwareTools-10.3.21-14772444.tar.gz</code></pre>    <img src="../../../../images/illustrations/vmware_02.png" />
-<p>After unzip, enter the directory and execute the command <font color="red">./vmware-install.pl</font>.</p>    <img src="../../../../images/illustrations/vmware_03.png" />
+[root@master vmware]# tar -zxvf VMwareTools-10.3.21-14772444.tar.gz</code></pre>
+<p>After unzip, enter the directory and execute the command <font color="red">./vmware-install.pl</font>.</p>    <img src="../../../../images/illustrations/vmware_02.png" />
 <p>Note that during the installation process, we need to select the option yes or no, and input yes for all.</p>
 After successful installation, we can see that there is a new directory named <font color="red">hgfs</font> under /mnt .</p>
 <h2 id="Set up"><a href="#Set up" class="headerlink" title="Set up"></a>Set up shared folder in VMware</h2>
-<p>Click the tool options bar to select virtual machine -> settings -> options -> shared folder, and then add shared folder.</p>    <img src="../../../../images/illustrations/vmware_04.png" />
-<p>We can enter <font color="red">/mnt/hgfs</font> directory to view the shared folder now.</p>
+<p>Click the tool options bar to select virtual machine -> settings -> options -> shared folder, and then add shared folder.</p>    <img src="../../../../images/illustrations/vmware_03.png" />
+<p>Therefor we can enter <font color="red">/mnt/hgfs</font> directory to view the shared folder now.</p>
     </div>
     <footer class="article-footer">
       <a data-url="http://example.com/2021/02/11/php/" data-id="cklsy6ytx000erd9561b746uv" data-title="PHP" class="article-share-link">Share</a>
