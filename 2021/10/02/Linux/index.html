@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Linux | Jack Dong's Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jack Dong's Blog</a>      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A modern stylish theme for Hexo</a>        </h2>
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>      </nav>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-php" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/02/Linux/" class="article-date">
+  <time class="dt-published" datetime="2021-02-11T23:00:00.000Z" itemprop="datePublished">2021-10-02</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Linux/">Linux</a>  </div>
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Linux    </h1>
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <div align="center">
+    <a target="_blank" rel="noopener" href="https://php.net">
+        <img
+            alt="Linux"
+            src="../../../../images/logos/linux_logo.jpeg"
+            width="150">    </a></div>
+
+<h1 id="The-PHP-Interpreter"><a href="#The-PHP-Interpreter" class="headerlink" title="The PHP Interpreter"></a>Installing Linux on VMWare</h1><p>The so-called virtual machine is a computer virtualized via software technology. It is not different from a real computer in terms of use.</p>
+<p>Common virtual machine softwares include VMware Workstation (VMware for short), VirtualBox, Microsoft Virtual PC and so on, of which VMware has the highest market share.</p>
+<div align="center"><img
+            alt="VMware"
+            src="../../../../images/logos/vmware_logo.jpeg"
+            width="150">    </a></div>
+<p><a target="_blank" rel="noopener" href="https://travis-ci.org/php/php-src"><img src="https://travis-ci.org/php/php-src.svg?branch=master" alt="Build status"></a><br><a target="_blank" rel="noopener" href="https://ci.appveyor.com/project/php/php-src"><img src="https://ci.appveyor.com/api/projects/status/meyur6fviaxgdwdy/branch/master?svg=true" alt="Build status"></a><br><a target="_blank" rel="noopener" href="https://dev.azure.com/phpazuredevops/php/_build/latest?definitionId=1&branchName=master"><img src="https://dev.azure.com/phpazuredevops/php/_apis/build/status/php.php-src?branchName=master" alt="Build Status"></a><br><a target="_blank" rel="noopener" href="https://bugs.chromium.org/p/oss-fuzz/issues/list?sort=-opened&can=1&q=proj:php"><img src="https://oss-fuzz-build-logs.storage.googleapis.com/badges/php.svg" alt="Fuzzing Status"></a></p>
+<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Download and install VMWare</h2>
+<p>VMware has two versions, VMware Workstation <font color="red">pro</font> and VMware Workstation <font color="red">player</font>.</p>
+<ul>
+<li>Player is a free version, which can only be used for non-commercial purposes and is suitable for personal learning.</li>
+<li>Pro is a commercial version with the most powerful function. It can only be used after paying. </li>
+</ul>
+<p>I found a pro version with a key on the Internet as following.</p>
+<p>Here is the download address of VMware Workstation Pro: https://pan.baidu.com/s/1XXhFFh0Fx0vzvcd1A543Yg , extraction code: <font color="red">2o19</font></p>
+<p>VMware has high requirements for computer hardware configuration. If the configuration is low, the virtual opportunity will be very slow or even can not run. Theoretically, the higher the configuration, the better. Now the mainstream computer configuration can meet the requirements of running VMware.</p>
+<h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>Install Linux</h2>
+<p>1. Start VMware and enter its <font color="blue">main</font> interface. </p> <img src="../../../../images/illustrations/install_linux_01.png" />
+<p>2. Click "<strong>create new virtual machine</strong>" to enter the <font color="blue">virtual machine setting wizard</font> interface. It is recommended that beginners choose "<strong>typical (recommended)</strong>". </p> <img src="../../../../images/illustrations/install_linux_02.png" />
+<p>3. Click "<strong>next</strong>" to enter the <font color="blue">install operating system</font> interface. If beginners have prepared the image file (.ISO file) of Linux system in advance, here you can select "<strong>image file of installer CD</strong>" and find the ISO file to install Linux system through the "Browse" button. Otherwise, select "<strong>install operating system later</strong>". </p> <img src="../../../../images/illustrations/install_linux_03.png" />
+<p>It is recommended that beginners download the CentOS image system in advance, and here is the download address of CentOS 6.5 image file Xunlei (click the link or copy the link to Xunlei to start downloading):</p>
+<ul>
+<li>32-bit CentOS 6.5 image: http://archive.kernel.org/centos-vault/6.5/isos/i386/CentOS-6.5-i386-bin-DVD1.iso</li>
+<li>64-bit CentOS 6.5 image: http://archive.kernel.org/centos-vault/6.5/isos/x86_64/CentOS-6.5-x86_64-bin-DVD1.iso</li>
+</ul>
+<p>4. Click "<strong>next</strong>" to enter the <font color="blue">easy installation information</font> interface, and fill in the full name, user name and password of the virtual machine. </p> <img src="../../../../images/illustrations/install_linux_04.png" />
+<p>5. Continue to "<strong>next</strong>", enter the <font color="blue">naming virtual machine</font> interface, give the virtual machine a name (any name), and then click the "<strong>Browse</strong>" button to select the storage location of the virtual machine system installation file. </p> <img src="../../../../images/illustrations/install_linux_05.png" />
+<p>6. Click "<strong>next</strong>" to enter <font color="blue">the specify disk capacity</font> interface. The default virtual hard disk size is <font color="red">20GB</font> (the virtual hard disk will be stored in the virtual machine system installation directory in the form of file). The space of the virtual hard disk can be adjusted as needed, but there is no need to worry about the space occupied, because the actual space occupied is based on the installed system size rather than the hard disk size divided here.</p>
+<p>For example, if you set the hard disk capacity to 20GB, but only 4GB is used to install Linux, in fact, it will only occupy 4GB of space in your Windows partition, and the occupied space will increase with the increase of the space used by the virtual machine system.</p>
+<p>The <font color="blue">specify disk capacity</font> interface can only be set by default. </p> <img src="../../../../images/illustrations/install_linux_06.png" />
+<p>7. Next, enter the <font color="blue">ready to create virtual machine</font> interface, confirm the virtual machine settings, and click "<strong>Finish</strong>" to start creating the virtual machine. </p> <img src="../../../../images/illustrations/install_linux_07.png" />
+<p>For readers who have downloaded the CentOS image and made corresponding settings in advance in step 3, VMware will directly start the Linux CentOS system at this time.</p>
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/11/php/" data-id="cklsy6ytx000erd9561b746uv" data-title="PHP" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/" rel="tag">php</a></li></ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/12/kubernetes/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Kubernetes (K8s)      </div>
+    </a>
+  
+  
+    <a href="/2021/02/02/about/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">About</div>
+    </a></nav>
+
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/composer/" rel="tag">composer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/" rel="tag">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postman/" rel="tag">postman</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii2/" rel="tag">yii2</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/04/Linux/">Linux</a>          </li>
+        
+          <li>
+            <a href="/2021/06/27/Git/">Git</a>          </li>
+        
+          <li>
+            <a href="/2021/06/19/Selenium/">Selenium</a>          </li>
+        
+          <li>
+            <a href="/2021/02/12/kubernetes/">Kubernetes (K8s)</a>          </li>
+        
+          <li>
+            <a href="/2021/02/11/php/">PHP</a>          </li>
+        
+          <li>
+            <a href="/2021/02/02/about/">About</a>          </li>
+        
+          <li>
+            <a href="/2021/01/12/redis/">Redis</a>          </li>
+        
+          <li>
+            <a href="/2021/01/11/postman/">Postman</a>          </li>
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Composer/">Composer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JQuery/">JQuery</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kubernetes/">Kubernetes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Postman/">Postman</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Yii2/">Yii2</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+</aside>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 By Autoload<br>
+      Driven - <a href="https://hexo.io/" target="_blank">Hexo</a>|Theme - <a href="https://github.com/autoload/hexo-theme-auto" target="_blank">Auto</a>    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a></nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>
