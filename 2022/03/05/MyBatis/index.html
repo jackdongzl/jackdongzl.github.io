@@ -79,10 +79,10 @@
 <p>I need to accurately query the data of a certain day. It is normal to query in the database, but I can't find the data in mybatis. I can query the data by copying the SQL statement of the console to the database for execution.</p>
 <p>SQL details are as follows:</p>
 <p>1. Query the data of a certain day directly in MySQL</p>
-<pre><code>select * from tbl_pushdata_police where date_format(time_begin, '%Y-%m-%d') = '2022-02-28';</code></pre>
+<pre><code>select * from tbl_user where date_format(create_time, '%Y-%m-%d') = '2022-02-28';</code></pre>
 <p>2. Query the data of a certain day via MyBatis</p>
 <pre><code>    &lt;if test="queryDate !=null "&gt;
-      &lt;![CDATA[  and DATE_FORMAT(time_begin, '%Y-%m-%d') =
+      &lt;![CDATA[  and DATE_FORMAT(create_time, '%Y-%m-%d') =
                         DATE_FORMAT(#{queryDate}, '%Y-%m-%d')   ]]&gt;
     &lt;/if&gt;</code></pre>
 

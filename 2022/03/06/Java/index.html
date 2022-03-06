@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Java | Jack Dong's Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Jack Dong's Blog</a>      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">A modern stylish theme for Hexo</a>        </h2>
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+          <a class="main-nav-link" href="/categories">Categories</a>
+        
+          <a class="main-nav-link" href="/tags">Tags</a>
+        
+          <a class="main-nav-link" href="/about">About</a>      </nav>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-php" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/03/06/Java/" class="article-date">
+  <time class="dt-published" datetime="2021-02-11T23:00:00.000Z" itemprop="datePublished">2022-03-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>  </div>
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Java    </h1>
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <div align="center">
+    <a target="_blank" rel="noopener" href="https://php.net">
+        <img
+            alt="PHP"
+            src="../../../../images/logos/java_logo.jpeg"
+            width="150">    </a></div>
+
+<h1 id="The-PHP-Interpreter"><a href="#The-PHP-Interpreter" class="headerlink" title="The PHP Interpreter"></a>Conversion between Baidu coordinates, Mars coordinates and WGS-84</h1>
+<p>In the process of map development, we usually come into contact the 3 types of map coordinate systems.</p>
+<p>Different coordinate systems are incompatible. e.g. the longitude and latitude located on Baidu map will be offset when they are directly traced on Gaode map.</p>
+<p><a target="_blank" rel="noopener" href="https://travis-ci.org/php/php-src"><img src="https://travis-ci.org/php/php-src.svg?branch=master" alt="Build status"></a><br><a target="_blank" rel="noopener" href="https://ci.appveyor.com/project/php/php-src"><img src="https://ci.appveyor.com/api/projects/status/meyur6fviaxgdwdy/branch/master?svg=true" alt="Build status"></a><br><a target="_blank" rel="noopener" href="https://dev.azure.com/phpazuredevops/php/_build/latest?definitionId=1&branchName=master"><img src="https://dev.azure.com/phpazuredevops/php/_apis/build/status/php.php-src?branchName=master" alt="Build Status"></a></p>
+<h2 id="Install"><a href="#Install" class="headerlink" title="Install"></a>3 types of map coordinate systems</h2>
+<p>In the process of map development, we usually come into contact the following 3 types of map coordinate systems:</p>
+<p>1. WGS-84</p>
+<p>WGS-84 original coordinate system is generally based on the longitude and latitude recorded by the International GPS recorder, the original longitude and latitude obtained through GPS positioning.</p>
+<p>The longitude and latitude (abroad) located by Google and Gaode maps are based on WGS-84 coordinate system, but in China, it is not allowed to mark directly with WGS-84 coordinate system, which can only be used after encryption.</p>
+<p>2. Mars coordinates</p>
+<p>Gcj-02 coordinate system, also known as "Mars coordinate system", is an original coordinate system created by China's Survey Bureau. It is encrypted by WGS-84. </p>
+<p>In China, gcj-02 coordinate system must be used at least, or a coordinate system encrypted after gcj-02 encryption, such as Baidu coordinate system. </p>
+<p>Both Gaode and Google use gcj-02 coordinate system in China. It can be said that gcj-02 is the most widely used coordinate system in China</p>
+<p>3. Baidu coordinates</p>
+<p>Bd-09 is a coordinate system formed by encrypting and offsetting again on the basis of gcj-02 coordinate system, which is only applicable to Baidu map. </p>
+<p><strong>By the way, there is another coordinate system called CGCS2000.</strong></p>
+<p>In fact, we often directly use WGS-84 coordinates to replace CGCS2000 coordinates. Because the definition of CGCS2000 is essentially the same as WGS-84. </p>
+<p>The reference ellipsoid used is very close. The variation of latitude and height on the ellipsoid caused by the difference of oblateness is up to 0.1mm. This difference can be ignored within the current measurement accuracy range.</p>
+
+<h2 id="reason"><a href="#reason" class="headerlink" title="reason"></a>Why does the offset occur</h2>
+<p>Because different coordinate systems are incompatible.</p>
+<p>For example, the longitude and latitude located on Baidu map will be offset when they are directly traced on Gaode map.</p>
+
+<h2 id="solution"><a href="#solution" class="headerlink" title="solution"></a>Java code is as follows:</h2>
+<pre><code>    public class LonlatConver {
+
+//    public static void main(String[] args) {
+//        Double lon = 113.262821;
+//        Double lat = 23.138022;
+//        double[] doubleArr = bd09_To_Gcj02(lon, lat);
+//        System.out.println(doubleArr[0] + ", " + doubleArr[1]);
+//    }
+
+    /**
+     * a
+     */
+    public final static double a = 6378245.0;
+    /**
+     * ee
+     */
+    public final static double ee = 0.00669342162296594323;
+
+    //圆周率 GCJ_02_To_WGS_84
+    public final static double pi = 3.14159265358979324;
+
+    /**
+     * @Description WGS84 to 火星坐标系 (GCJ-02) * @param lon 经度 * @param lat 纬度 * @return
+     */
+    public static double[] wgs84_To_Gcj02(double lon, double lat) {
+        if (outOfChina(lat, lon)) {
+            return null;
+        }
+        double dLat = transformLat(lon - 105.0, lat - 35.0);
+        double dLon = transformLon(lon - 105.0, lat - 35.0);
+        double radLat = lat / 180.0 * pi;
+        double magic = Math.sin(radLat);
+        magic = 1 - ee * magic * magic;
+        double sqrtMagic = Math.sqrt(magic);
+        dLat = (dLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * pi);
+        dLon = (dLon * 180.0) / (a / sqrtMagic * Math.cos(radLat) * pi);
+        double mgLat = lat + dLat;
+        double mgLon = lon + dLon;
+        return new double[]{mgLon, mgLat};
+    }
+
+    /**
+     * @Description 火星坐标系 (GCJ-02) to WGS84 * @param lon * @param lat * @return
+     */
+    public static double[] gcj02_To_Wgs84(double lon, double lat) {
+        double[] gps = transform(lat, lon);
+        double lontitude = lon * 2 - gps[1];
+        double latitude = lat * 2 - gps[0];
+        return new double[]{lontitude, latitude};
+    }
+
+    /**
+     * @Description 火星坐标系 (GCJ-02) to 百度坐标系 (BD-09) * @param gg_lon * @param gg_lat * @return
+     */
+    public static double[] gcj02_To_Bd09(double gg_lon, double gg_lat) {
+        double x = gg_lon, y = gg_lat;
+        double z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * pi);
+        double theta = Math.atan2(y, x) + 0.000003 * Math.cos(x * pi);
+        double bd_lon = z * Math.cos(theta) + 0.0065;
+        double bd_lat = z * Math.sin(theta) + 0.006;
+        return new double[]{bd_lon, bd_lat};
+    }
+
+    /**
+     * @Description 百度坐标系 (BD-09) to 火星坐标系 (GCJ-02) * @param bd_lon * @param bd_lat * @return
+     */
+    public static double[] bd09_To_Gcj02(double bd_lon, double bd_lat) {
+        double x = bd_lon - 0.0065, y = bd_lat - 0.006;
+        double z = Math.sqrt(x * x + y * y) - 0.00002 * Math.sin(y * pi);
+        double theta = Math.atan2(y, x) - 0.000003 * Math.cos(x * pi);
+        double gg_lon = z * Math.cos(theta);
+        double gg_lat = z * Math.sin(theta);
+        return new double[]{gg_lon, gg_lat};
+    }
+
+    /**
+     * @Description 百度坐标系 (BD-09) to WGS84 * @param bd_lat * @param bd_lon * @return
+     */
+    public static double[] bd09_To_Wgs84(double bd_lon, double bd_lat) {
+        double[] gcj02 = LonlatConver.bd09_To_Gcj02(bd_lon, bd_lat);
+        double[] map84 = LonlatConver.gcj02_To_Wgs84(gcj02[0], gcj02[1]);
+        return map84;
+    }
+
+    /**
+     * @Description 判断是否在中国范围内 * @param lat * @param lon * @return
+     */
+    public static boolean outOfChina(double lat, double lon) {
+        if (lon < 72.004 || lon > 137.8347) return true;
+        if (lat < 0.8293 || lat > 55.8271) return true;
+        return false;
+    }
+
+    /**
+     * @Description transform * @param lat * @param lon * @return
+     */
+    private static double[] transform(double lat, double lon) {
+        if (outOfChina(lat, lon)) {
+            return new double[]{lat, lon};
+        }
+        double dLat = transformLat(lon - 105.0, lat - 35.0);
+        double dLon = transformLon(lon - 105.0, lat - 35.0);
+        double radLat = lat / 180.0 * pi;
+        double magic = Math.sin(radLat);
+        magic = 1 - ee * magic * magic;
+        double sqrtMagic = Math.sqrt(magic);
+        dLat = (dLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * pi);
+        dLon = (dLon * 180.0) / (a / sqrtMagic * Math.cos(radLat) * pi);
+        double mgLat = lat + dLat;
+        double mgLon = lon + dLon;
+        return new double[]{mgLat, mgLon};
+    }
+
+    /**
+     * @Description transformLat * @param x * @param y * @return
+     */
+    private static double transformLat(double x, double y) {
+        double ret = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y + 0.2 * Math.sqrt(Math.abs(x));
+        ret += (20.0 * Math.sin(6.0 * x * pi) + 20.0 * Math.sin(2.0 * x * pi)) * 2.0 / 3.0;
+        ret += (20.0 * Math.sin(y * pi) + 40.0 * Math.sin(y / 3.0 * pi)) * 2.0 / 3.0;
+        ret += (160.0 * Math.sin(y / 12.0 * pi) + 320 * Math.sin(y * pi / 30.0)) * 2.0 / 3.0;
+        return ret;
+    }
+
+    /**
+     * @Description transformLon * @param x * @param y * @return
+     */
+    public static double transformLon(double x, double y) {
+        double ret = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1 * Math.sqrt(Math.abs(x));
+        ret += (20.0 * Math.sin(6.0 * x * pi) + 20.0 * Math.sin(2.0 * x * pi)) * 2.0 / 3.0;
+        ret += (20.0 * Math.sin(x * pi) + 40.0 * Math.sin(x / 3.0 * pi)) * 2.0 / 3.0;
+        ret += (150.0 * Math.sin(x / 12.0 * pi) + 300.0 * Math.sin(x / 30.0 * pi)) * 2.0 / 3.0;
+        return ret;
+    }
+
+    /**
+     * GPS经纬度转换为 度（3114.1717,12122.1067 → 121.37300779，31.23436014） * @param dms 坐标 * @param type 坐标类型 E/N * @return String 解析后的经纬度
+     */
+    public static String gpsToWgs84(String dms, String type) {
+        if (dms == null || dms.equals("")) {
+            return "0.0";
+        }
+        double result = 0.0D;
+        String temp = "";
+        if (type.equals("E")) {//经度
+            String e1 = dms.substring(0, 3);// 截取3位数字，经度共3位，最多180度
+            // 经度是一伦敦为点作南北两极的线为0度,所有往西和往东各180度
+            String e2 = dms.substring(3, dms.length());// 需要运算的小数
+            result = Double.parseDouble(e1);
+            /* System.out.println("e2===="+e2);
+                System.out.println("===="+Double.parseDouble(e2) / 60.0D);*/
+            result += (Double.parseDouble(e2) / 60.0D);
+            temp = String.valueOf(result);
+            if (temp.length() > 11) {
+                temp = e1 + temp.substring(temp.indexOf("."), 11);
+            }
+        } else if (type.equals("N")) { //纬度，纬度是以赤道为基准,相当于把地球分两半,两个半球面上的点和平面夹角0~90度
+            String n1 = dms.substring(0, 2);//截取2位，纬度共2位，最多90度
+            String n2 = dms.substring(2, dms.length());
+            result = Double.parseDouble(n1);
+            /* System.out.println("n2===="+n2);
+                System.out.println("===="+Double.parseDouble(n2) / 60.0D);*/
+            result += Double.parseDouble(n2) / 60.0D;
+            temp = String.valueOf(result);
+            if (temp.length() > 10) {
+                temp = n1 + temp.substring(temp.indexOf("."), 10);
+            }
+        }
+        return temp;
+    }
+
+}
+</code></pre>
+
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/02/11/php/" data-id="cklsy6ytx000erd9561b746uv" data-title="PHP" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/php/" rel="tag">php</a></li></ul>
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/02/12/kubernetes/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Kubernetes (K8s)      </div>
+    </a>
+  
+  
+    <a href="/2021/02/02/about/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">About</div>
+    </a></nav>
+
+  
+</article>
+</section>
+        <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/C/" rel="tag">C</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Go/" rel="tag">Go</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kubernetes/" rel="tag">Kubernetes</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NoSQL/" rel="tag">NoSQL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/composer/" rel="tag">composer</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/" rel="tag">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jquery/" rel="tag">jquery</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/" rel="tag">Linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MyBatis/" rel="tag">MyBatis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/php/" rel="tag">php</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/postman/" rel="tag">postman</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/" rel="tag">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yii2/" rel="tag">yii2</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2022/03/06/Java/">Java</a>          </li>
+
+          <li>
+            <a href="/2022/03/05/MyBatis/">MyBatis</a>          </li>
+
+          <li>
+            <a href="/2021/07/04/Linux/">Linux</a>          </li>
+        
+          <li>
+            <a href="/2021/06/27/Git/">Git</a>          </li>
+        
+          <li>
+            <a href="/2021/06/19/Selenium/">Selenium</a>          </li>
+        
+          <li>
+            <a href="/2021/02/12/kubernetes/">Kubernetes (K8s)</a>          </li>
+        
+          <li>
+            <a href="/2021/01/12/redis/">Redis</a>          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Composer/">Composer</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/JQuery/">JQuery</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Kubernetes/">Kubernetes</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Postman/">Postman</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/React/">React</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Redis/">Redis</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue/">Vue</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Yii2/">Yii2</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">December 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">November 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/10/">October 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li></ul>
+    </div>
+  </div>
+</aside>
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 By Autoload<br>
+      Driven - <a href="https://hexo.io/" target="_blank">Hexo</a>|Theme - <a href="https://github.com/autoload/hexo-theme-auto" target="_blank">Auto</a>    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a></nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>
